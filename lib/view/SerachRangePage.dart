@@ -1,30 +1,11 @@
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.brown,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
+class SrarchRangePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SrarchRangePage createState() => _SrarchRangePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SrarchRangePageState extends State<MyHomePage> {
   double _sliderValue = 1.5; // Change initial value to be slightly below half
   int _selectedIndex = 0;
 
@@ -71,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SizedBox(height: 1), // Add some space for the button
           ElevatedButton(
-            onPressed: () {},
-            child: Text('検索する'),
+              onPressed: () {},
+              child: Text('検索する'),
               style: ElevatedButton.styleFrom(fixedSize: Size(100, 40))
           ),
         ],
@@ -116,21 +97,5 @@ class _MyHomePageState extends State<MyHomePage> {
       default:
         return '';
     }
-  }
-}
-
-class SearchCategoryPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: 20,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Item $index'),
-          );
-        },
-      ),
-    );
   }
 }
