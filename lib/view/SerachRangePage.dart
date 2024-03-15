@@ -1,3 +1,5 @@
+//小分けにして可読性を上げたい
+
 class SrarchRangePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
 
