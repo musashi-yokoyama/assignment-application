@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:grumetsearch/view/SerachRangePage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart'; // packageをインポート
 
-void main() {
+//APIアクセスキーが入った.envファイルの読み込み
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
   runApp(MyApp());
 }
 
@@ -17,5 +20,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 
