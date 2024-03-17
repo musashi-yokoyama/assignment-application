@@ -8,6 +8,10 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
+// .env に記述したアクセストークンを取得
+final String? token = dotenv.env['Hotpapper_API_KEY'];
+
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,6 +24,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
