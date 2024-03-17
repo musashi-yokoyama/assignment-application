@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-import '../model/shop_model.dart';
 
+/*
 final String? token = dotenv.env['Hotpapper_ACCESS_Key'];
 
 class APIClient {
@@ -49,7 +49,7 @@ class APIClient {
   }
 }
 
-/*
+
 void main() async {
   try {
     final restaurantData = await APIClient.fetchRestaurantData(

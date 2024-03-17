@@ -1,3 +1,5 @@
+import "package:flutter/material.dart";
+
 class SearchCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,16 @@
 //小分けにして可読性を上げたい
+import 'package:flutter/material.dart';
 
-class SrarchRangePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+import 'SearchCategoryPage.dart';
+
+class SearchRangePage extends StatefulWidget {
+  SearchRangePage({Key? key}) : super(key: key);
 
   @override
-  _SrarchRangePage createState() => _SrarchRangePageState();
+  _SearchRangePageState createState() => _SearchRangePageState();
 }
 
-class _SrarchRangePageState extends State<MyHomePage> {
+class _SearchRangePageState extends State<SearchRangePage> {
   double _sliderValue = 1.5; // Change initial value to be slightly below half
   int _selectedIndex = 0;
 
@@ -20,7 +23,7 @@ class _SrarchRangePageState extends State<MyHomePage> {
           children: [
             Text(
               '${_getDistanceText(_sliderValue)}',
-              style: TextStyle(fontSize: 45,), // increase font size
+              style: TextStyle(fontSize: 45,),
             ),
           ],
         ),
@@ -28,31 +31,16 @@ class _SrarchRangePageState extends State<MyHomePage> {
       body: _selectedIndex == 0
           ? Column(
         children: [
-          Spacer(), // Use Spacer to push slider to the bottom
-          GestureDetector(
-            onHorizontalDragUpdate: (details) {
+          Spacer(),
+          SliderWidget(
+            value: _sliderValue,
+            onChanged: (newValue) {
               setState(() {
-                _sliderValue += details.primaryDelta! / 100;
-                if (_sliderValue < 0) {
-                  _sliderValue = 0;
-                } else if (_sliderValue > 4) {
-                  _sliderValue = 4;
-                }
+                _sliderValue = newValue;
               });
             },
-            child: Slider(
-              value: _sliderValue,
-              onChanged: (newValue) {
-                setState(() {
-                  _sliderValue = newValue;
-                });
-              },
-              min: 0,
-              max: 4,
-              divisions: 4,
-            ),
           ),
-          SizedBox(height: 1), // Add some space for the button
+          SizedBox(height: 1),
           ElevatedButton(
               onPressed: () {},
               child: Text('検索する'),
@@ -61,21 +49,9 @@ class _SrarchRangePageState extends State<MyHomePage> {
         ],
       )
           : SearchCategoryPage(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: '周囲で探す',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.food_bank),
-            label: 'カテゴリで探す',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        backgroundColor: Colors.brown,
-        selectedItemColor: Colors.amber[800],
-        onTap: (index) {
+      bottomNavigationBar: BottomNavigationBarWidget(
+        selectedIndex: _selectedIndex,
+        onItemTapped: (index) {
           setState(() {
             _selectedIndex = index;
           });
@@ -83,7 +59,7 @@ class _SrarchRangePageState extends State<MyHomePage> {
       ),
     );
   }
-
+//appbarの距離の変更
   String _getDistanceText(double value) {
     switch (value.toInt()) {
       case 0:
@@ -101,3 +77,66 @@ class _SrarchRangePageState extends State<MyHomePage> {
     }
   }
 }
+
+//スライダーボタンのウィジェット
+class SliderWidget extends StatelessWidget {
+  final double value;
+  final ValueChanged<double>? onChanged;
+
+  const SliderWidget({
+    Key? key,
+    required this.value,
+    required this.onChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onHorizontalDragUpdate: (details) {
+        if (onChanged != null) {
+          onChanged!(value + details.primaryDelta! / 100);
+        }
+      },
+      child: Slider(
+        value: value,
+        onChanged: onChanged,
+        min: 0,
+        max: 4,
+        divisions: 4,
+      ),
+    );
+  }
+}
+
+//ボトムズナビゲータボタンのウィジェット
+class BottomNavigationBarWidget extends StatelessWidget {
+  final int selectedIndex;
+  final ValueChanged<int>? onItemTapped;
+
+  const BottomNavigationBarWidget({
+    Key? key,
+    required this.selectedIndex,
+    required this.onItemTapped,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: '周囲で探す',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.food_bank),
+          label: 'カテゴリで探す',
+        ),
+      ],
+      currentIndex: selectedIndex,
+      backgroundColor: Colors.brown,
+      selectedItemColor: Colors.amber[800],
+      onTap: onItemTapped,
+    );
+  }
+}
+

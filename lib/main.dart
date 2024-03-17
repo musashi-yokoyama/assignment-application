@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grumetsearch/view/SerachRangePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: MyHomePage(),
+      home: SearchRangePage(),
     );
   }
 }
+
+
