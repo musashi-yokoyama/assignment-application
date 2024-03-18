@@ -15,65 +15,85 @@ class SearchRangePage extends StatefulWidget {
 }
 
 class _SearchRangePageState extends State<SearchRangePage> {
-  double _sliderValue = 1.5; // Change initial value to be slightly below half
+  double _sliderValue = 1.5;
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              '${_getDistanceText(_sliderValue)}',
-              style: TextStyle(fontSize: 45,),
-            ),
-          ],
-        ),
-      ),
-      body: _selectedIndex == 0
-          ? Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: Icon(Icons.search,size: 50,),
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  backgroundColor: Colors.orange
+      appBar: _buildAppBar(),
+      body: _buildBody(),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
 
-                ),
-              ),
-              SizedBox(width: 30),
-            ],
-          ),
-          SliderWidget(
-            value: _sliderValue,
-            onChanged: (newValue) {
-              setState(() {
-                _sliderValue = newValue;
-              });
-            },
-          ),
-        ],
-      )
-          : SearchCategoryPage(),
-      bottomNavigationBar: BottomNavigationBarWidget(
-        selectedIndex: _selectedIndex,
-        onItemTapped: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: Center(
+        child: Text(
+          '${_getDistanceText(_sliderValue)}',
+          style: TextStyle(fontSize: 45,),
+        ),
       ),
     );
   }
 
-  //appbarの距離の変更
+  Widget _buildBody() {
+    return _selectedIndex == 0
+        ? _buildSearchByLocation()
+        : SearchCategoryPage();
+  }
+
+  Widget _buildSearchByLocation() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Align(
+          alignment: Alignment.centerRight,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Icon(Icons.search,size: 50,),
+            style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                backgroundColor: Colors.orange
+            ),
+          ),
+        ),
+        SliderWidget(
+          value: _sliderValue,
+          onChanged: (newValue) {
+            setState(() {
+              _sliderValue = newValue;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  BottomNavigationBar _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: '周囲で探す',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.food_bank),
+          label: 'カテゴリで探す',
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      backgroundColor: Colors.brown,
+      selectedItemColor: Colors.amber[800],
+      onTap: (index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+    );
+  }
+
   String _getDistanceText(double value) {
     switch (value.toInt()) {
       case 0:
@@ -91,6 +111,7 @@ class _SearchRangePageState extends State<SearchRangePage> {
     }
   }
 }
+
 
 //スライダーボタンのウィジェット
 class SliderWidget extends StatelessWidget {

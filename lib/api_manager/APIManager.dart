@@ -56,17 +56,4 @@ class APIClient {
   }
 }
 
-
-void main() async {
-  try {
-    final restaurantData = await APIClient.fetchRestaurantData(
-        keyword: 'ramen',
-        range: '3',
-        genre: 'G001'
-    );
-    print('Restaurant data: $restaurantData');
-  } catch (e) {
-    print('Error fetching restaurant data: $e');
-  }
-}
 */
