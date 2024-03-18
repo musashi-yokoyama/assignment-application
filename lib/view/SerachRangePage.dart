@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'SearchCategoryPage.dart';
 
+import 'package:flutter/material.dart';
+
+import 'SearchCategoryPage.dart';
+
 class SearchRangePage extends StatefulWidget {
   SearchRangePage({Key? key}) : super(key: key);
 
@@ -30,8 +34,23 @@ class _SearchRangePageState extends State<SearchRangePage> {
       ),
       body: _selectedIndex == 0
           ? Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: Icon(Icons.search,size: 50,),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  backgroundColor: Colors.orange
+
+                ),
+              ),
+              SizedBox(width: 30),
+            ],
+          ),
           SliderWidget(
             value: _sliderValue,
             onChanged: (newValue) {
@@ -39,12 +58,6 @@ class _SearchRangePageState extends State<SearchRangePage> {
                 _sliderValue = newValue;
               });
             },
-          ),
-          SizedBox(height: 1),
-          ElevatedButton(
-              onPressed: () {},
-              child: Text('検索する'),
-              style: ElevatedButton.styleFrom(fixedSize: Size(100, 40))
           ),
         ],
       )
@@ -59,7 +72,8 @@ class _SearchRangePageState extends State<SearchRangePage> {
       ),
     );
   }
-//appbarの距離の変更
+
+  //appbarの距離の変更
   String _getDistanceText(double value) {
     switch (value.toInt()) {
       case 0:
@@ -139,4 +153,3 @@ class BottomNavigationBarWidget extends StatelessWidget {
     );
   }
 }
-

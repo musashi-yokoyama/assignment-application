@@ -1,9 +1,16 @@
+/*
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
-/*
-final String? token = dotenv.env['Hotpapper_ACCESS_Key'];
+Future<List<Shop>> searchHotpapper(String keyword)async
+
+// Uri.https([baseUrl], [Urlパス], Map<String,dynamic>[クエリパラメータ])
+final uri = Uri.https([])
+
+
+
+final String? token = dotenv.env['Hotpapper_API_Key'];
 
 class APIClient {
   static Future<RestaurantDataModel> fetchRestaurantData(
