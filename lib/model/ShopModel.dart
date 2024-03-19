@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-
+//機能最低条件
 //・店舗名称,アクセス,サムネイル画像
 //・店舗名称,住所,営業時間,画像
 class Shop {
