@@ -1,11 +1,9 @@
-//小分けにして可読性を上げたい
+//コンポーネント化して可読性を上げたい
+//地図の表記は諦める
+
 import 'package:flutter/material.dart';
 
 import '../widget/SearchRangeWidget.dart';
-import 'SearchCategoryPage.dart';
-
-import 'package:flutter/material.dart';
-
 import 'SearchCategoryPage.dart';
 
 class SearchRangePage extends StatefulWidget {
