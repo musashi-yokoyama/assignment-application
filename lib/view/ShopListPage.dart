@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../model/ShopModel.dart';
+import '../widget/SearchRangeWidget.dart';
 import '../widget/ShopListWidget.dart';
 
 class ShopListPage extends StatefulWidget {
@@ -12,6 +13,13 @@ class ShopListPage extends StatefulWidget {
 
 class _ShopListPage extends State<ShopListPage> {
   List<Map<String, dynamic>> shop = [];
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +32,9 @@ class _ShopListPage extends State<ShopListPage> {
           Expanded(
             //Listviewでスクロール可能なリストにする
             child: ListView(
-
               /*children: shop
                   .map((shop) => ShopContainer(shop: shop))
                   .toList(),*/
-
             ),
           ),
         ],

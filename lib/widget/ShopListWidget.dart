@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/ShopModel.dart';
-//検索結果で表示する店舗情報を格納したwidget
+//検索結果で表示する店舗情報を格納するwidget
 class ShopContainer extends StatelessWidget {
   const ShopContainer({
     super.key,

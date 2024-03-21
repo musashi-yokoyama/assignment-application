@@ -24,7 +24,7 @@ class SearchCategoryPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return CategoryItem(
             categoryName: categories[index],
-            imagePath: 'assets/images/${categories[index].toLowerCase()}.jpg',
+            imagePath: '',
           );
         },
       ),

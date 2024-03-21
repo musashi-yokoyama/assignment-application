@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+//範囲検索のwidgetをコンポーネント化
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double sliderValue;
 
@@ -58,11 +58,11 @@ String _getDistanceText(double value) {
     case 1:
       return '500m';
     case 2:
-      return '1000m';
+      return '1km';
     case 3:
-      return '2000m';
+      return '2km';
     case 4:
-      return '3000m';
+      return '3km';
     default:
       return '';
   }

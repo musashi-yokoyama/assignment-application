@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../widget/SearchRangeWidget.dart';
 import 'SearchCategoryPage.dart';
+import 'ShopListPage.dart';
 
 class SearchRangePage extends StatefulWidget {
   SearchRangePage({Key? key}) : super(key: key);
@@ -44,7 +45,13 @@ class _SearchRangePageState extends State<SearchRangePage> {
         Align(
           alignment: Alignment.centerRight,
           child: ElevatedButton(
-            onPressed: () {},
+            //ボタンを押すと検索一覧ページに飛ぶようにする
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShopListPage()),
+              );
+            },
             child: Icon(Icons.search, size: 50,),
             style: ElevatedButton.styleFrom(
               shape: CircleBorder(),
