@@ -32,9 +32,12 @@ class _ShopListPage extends State<ShopListPage> {
           Expanded(
             //Listviewでスクロール可能なリストにする
             child: ListView(
-              /*children: shop
+              /*
+              children: shop
                   .map((shop) => ShopContainer(shop: shop))
-                  .toList(),*/
+                  .toList(),
+
+               */
             ),
           ),
         ],

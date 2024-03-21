@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../model/ShopModel.dart';
 
-
+//5つのクエリパラメータを設定しなければいけない？
 Future<List<Shop>> searchHotpapper(String keyword) async {
   //URL、クエリパラメータの設定
   final uri = Uri.https('webservice.recruit.co.jp', '/hotpepper/gourmet/v1/', {

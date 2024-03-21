@@ -21,7 +21,7 @@ class _SearchRangePageState extends State<SearchRangePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: SliderAppBar(
         sliderValue: _sliderValue,
       ),
       body: _selectedIndex == 0
@@ -45,7 +45,6 @@ class _SearchRangePageState extends State<SearchRangePage> {
         Align(
           alignment: Alignment.centerRight,
           child: ElevatedButton(
-            //ボタンを押すと検索一覧ページに飛ぶようにする
             onPressed: () {
               Navigator.push(
                 context,

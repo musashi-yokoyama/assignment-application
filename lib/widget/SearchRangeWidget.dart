@@ -1,26 +1,7 @@
 import 'package:flutter/material.dart';
 //範囲検索のwidgetをコンポーネント化
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final double sliderValue;
 
-  CustomAppBar({required this.sliderValue});
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: Center(
-        child: Text(
-          '${_getDistanceText(sliderValue)}',
-          style: TextStyle(fontSize: 45,),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
-}
-
+//下のナビゲーションバー
 class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int>? onItemTapped;
@@ -51,6 +32,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
   }
 }
 
+
+//ここから下は検索範囲を指定するwidget群
 String _getDistanceText(double value) {
   switch (value.toInt()) {
     case 0:
@@ -95,4 +78,25 @@ class SliderWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+class SliderAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final double sliderValue;
+
+  SliderAppBar({required this.sliderValue});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Center(
+        child: Text(
+          '${_getDistanceText(sliderValue)}',
+          style: TextStyle(fontSize: 45,),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
