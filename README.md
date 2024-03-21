@@ -34,10 +34,9 @@
 - iOS iPhone14
 
 ## 開発期間
-- 約15時間
+- 約20時間
 
 ## アプリ画面（開発途中）
-(https://github.com/musashi-yokoyama/assignment-application/assets/162859196/825ed1b2-73fb-4caa-96fd-a6e8bfb803f5)
 
 ## アプリケーション機能
 - 近くの飲食店を探す
