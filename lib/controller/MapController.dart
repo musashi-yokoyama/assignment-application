@@ -1,5 +1,5 @@
 //googlemap for flutter
-//サンプルコード
+
 //一旦中心を三宮駅にしておく
 
 import 'package:flutter/material.dart';

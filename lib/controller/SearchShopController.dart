@@ -17,9 +17,7 @@ Future<List<Shop>> searchHotpapper(String keyword) async {
   final http.Response res = await http.get(uri, headers: {
     'Authorization': 'Bearer $token',
   });
-
-  //戻り値をShopクラスの配列に変換
-  //変換したShopクラスの配列を返す(returnする)
+  //レスポンスのハンドリング
   if (res.statusCode == 200) {
     // レスポンスをモデルクラスへ変換
     final List<dynamic> body = jsonDecode(res.body);

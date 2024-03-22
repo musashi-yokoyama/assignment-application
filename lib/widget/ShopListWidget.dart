@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/ShopModel.dart';
+import '../view/ShopDetailPage.dart';
 //検索結果で表示する店舗情報を格納するwidget
 class ShopContainer extends StatelessWidget {
   const ShopContainer({
@@ -19,6 +20,14 @@ class ShopContainer extends StatelessWidget {
         vertical: 12,
         horizontal: 16,
     ),
+    child: InkWell(
+    onTap: () {
+    // Shop の詳細画面に遷移する処理を記述
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => ShopDetailPage(shop: shop)),
+    );
+    },
     child: Container(
       decoration: const BoxDecoration(
         color: Colors.grey,
