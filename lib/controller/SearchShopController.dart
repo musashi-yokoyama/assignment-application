@@ -7,9 +7,12 @@ import '../model/ShopModel.dart';
 Future<List<Shop>> searchHotpapper(String keyword, double lat, double lon, int range) async {
   //URL、クエリパラメータの設定
   final uri = Uri.https('webservice.recruit.co.jp', '/hotpepper/gourmet/v1/', {
+    //範囲検索
     'lat': lat.toString(),
     'lng': lon.toString(),
     'range': range.toString(),
+    //カテゴリ検索
+    'keyword': keyword.toString(),
   });
 
   //アクセスキーの取得
@@ -21,6 +24,7 @@ Future<List<Shop>> searchHotpapper(String keyword, double lat, double lon, int r
   });
   //レスポンスのハンドリング
   if (res.statusCode == 200) {
+    // xmlファイルをjson形式に変換する処理
     // レスポンスをモデルクラスへ変換
     final Map<String, dynamic> data = jsonDecode(res.body);
     if (data.containsKey('results') && data['results'].containsKey('shop')) {
