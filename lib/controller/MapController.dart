@@ -1,7 +1,7 @@
 //googlemap for flutter
 
 //一旦中心を三宮駅にしておく
-
+//シミュレータ上で動かそうとしたが許可がない？とエラーがでる
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

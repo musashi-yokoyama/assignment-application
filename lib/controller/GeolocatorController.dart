@@ -20,6 +20,7 @@ class LocationModel {
       latitude = position.latitude;
       longitude = position.longitude;
     } catch (e) {
+      //実験
       print(e.toString());
     }
   }

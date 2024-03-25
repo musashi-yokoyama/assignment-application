@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../model/ShopModel.dart';
 
+//検索クエリにrangeを含むと店舗情報が取得できない（どこか間違えている？）
 //5つのクエリパラメータを設定しなければいけない？
 Future<List<Shop>> searchHotpapper(String keyword, double lat, double lon, int range) async {
   //URL、クエリパラメータの設定
